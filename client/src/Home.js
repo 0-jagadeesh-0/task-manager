@@ -1,18 +1,25 @@
 import React from 'react'
-import Signup from './auth/Signup'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Signin from './auth/Signin';
-import App from './App';
+import { useNavigate } from 'react-router'
+import image from './assets/task-icon.png'
+import Navbar from './components/Navbar'
+import './css/home.css'
 
 function Home() {
+    const navigate = useNavigate();
     return (
-        <Router>
-            <Routes>
-                <Route exact path="/" component={App} />
-                <Route path="/log" component={Signin} />
-                <Route path="/home" component={Signup} />
-            </Routes>
-        </Router>
+        <div>
+            <Navbar />
+            <div className='home'>
+                <img className='src-img' src={image} alt="No internet" />
+                <div className='home-div'>
+                    <button className='sign-btn' onClick={() => navigate('/signup')}>Sign Up</button><br />
+                    <div>
+                        <h1>Manage your daily Tasks</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
     )
 }

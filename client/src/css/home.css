@@ -1,0 +1,52 @@
+.home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.src-img {
+    width: 500px;
+    height: 500px;
+}
+
+.home-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.sign-btn {
+    background-color: black;
+    color: white;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 15px;
+    margin: 2% 0;
+}
+
+@media screen and (max-width:768px) {
+    .home {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .src-img {
+        width: 300px;
+        height: 300px;
+    }
+
+
+
+    .home-div div h1 {
+        font-size: 1.3rem;
+    }
+
+
+}

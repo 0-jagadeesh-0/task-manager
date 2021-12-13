@@ -1,17 +1,44 @@
 const Task = require('../models/tasks');
+const jwt = require('jsonwebtoken');
 
 const addTask = async (req, res) => {
-    const newTask = await Task(req.body);
-    // console.log(newTask);
-    await newTask.save();
-    res.send("Sucess");
+    let token = req.headers.token;
+    jwt.verify(token, 'secretkey', async (err, decoded) => {
+        if (err) {
+            return res.status(400).json("Not Authorized");
+        }
+        const newTask = Task({
+            task: req.body.task,
+            time: req.body.time,
+            user: decoded.userId
+        });
+        // console.log(newTask);
+        newTask.save();
+        res.send("Sucess");
+    })
 }
 
 const getTask = async (req, res) => {
+    let token = req.headers.token;
+    jwt.verify(token, 'secretkey', async (err, decoded) => {
+        if (err) {
+            return res.status(400).json("Not Authorized");
+        }
+        await Task.find({ user: decoded.userId }, (err, tasks) => {
+            if (err) {
+                return res.status(400).send("error");
+            }
+            return res.status(200).json({
+                title: "user found",
+                tasks: tasks
+            })
+        })
 
-    await Task.find({}).then((task) => {
-        res.json(task);
     })
+
+    // await Task.find({}).then((task) => {
+    //     res.json(task);
+    // })
 }
 
 const deleteById = async (req, res) => {
