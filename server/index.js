@@ -27,6 +27,6 @@ app.get('/tasks', getTask);
 app.delete('/tasks/:id', deleteById);
 
 app.use('/', userRoutes);
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log("Server running...");
 })
