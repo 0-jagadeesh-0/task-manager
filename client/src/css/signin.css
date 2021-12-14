@@ -1,9 +1,20 @@
+.form {
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form h3 {
+    margin: 2% 0;
+    text-align: center;
+}
+
 .sign-in-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 15%;
 }
 
 .sign-in-form div {
@@ -45,7 +56,7 @@
 }
 
 @media screen and (max-width:768px) {
-    .sign-in-form {
+    .form {
         margin-top: 50%;
     }
 

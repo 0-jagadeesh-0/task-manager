@@ -28,17 +28,22 @@ function Signup() {
     return (
         <div>
             <Navbar />
-            <form className='sign-in-form' onSubmit={submitHandler}>
-                <div>
-                    <label >Username</label>
-                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                </div>
-                <div>
-                    <label >Password</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <input className='reg-btn' type="submit" value="Register" />
-            </form>
+            <div className='form'>
+                <h3>Signup</h3>
+                <form className='sign-in-form' onSubmit={submitHandler}>
+                    <div>
+                        <label >Username</label>
+                        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    </div>
+                    <div>
+                        <label >Password</label>
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                    <input className='reg-btn' type="submit" value="Register" />
+                </form>
+
+            </div>
+
 
         </div>
 
