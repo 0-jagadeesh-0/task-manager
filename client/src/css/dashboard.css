@@ -3,7 +3,7 @@
     margin: 30px auto;
     overflow: auto;
     min-height: 300px;
-    border: 2px solid #000957;
+    border: 2px solid #181D31;
     padding: 30px;
     border-radius: 5px;
     margin-top: 3%;
@@ -27,7 +27,7 @@
 }
 
 .task {
-    background-color: #D3E4CD;
+    background-color: #C2FFF9;
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
@@ -49,7 +49,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #D3E4CD;
+    background-color: #C2FFF9;
     border-radius: 5px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .submit-btn {
-    background-color: black;
+    background-color: #009DAE;
     color: white;
     font-size: 1rem;
     border: none;
@@ -81,4 +81,14 @@
     cursor: pointer;
     padding: 5px 60px;
     margin: 5% 0;
+}
+
+@media screen and (max-width:768px) {
+    .container {
+        max-width: 300px;
+    }
+
+    .header h1 {
+        font-size: 1.7rem;
+    }
 }

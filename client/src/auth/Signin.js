@@ -5,6 +5,7 @@ import '../css/signin.css'
 import Navbar from '../components/Navbar';
 
 function Signin() {
+    const url = "http://127.0.0.1:5000";
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -13,11 +14,19 @@ function Signin() {
 
         e.preventDefault();
 
-        await axios.post('/login', { username, password }).then((res) => {
-            const token = res.data.token;
+        await axios.post(`${url}/login`, { username, password }).then((res) => {
+
             // console.log(token);
+
+            const token = res.data.token;
             localStorage.setItem('token', token);
-            navigate('/dashboard');
+            navigate(`/dashboard`);
+
+
+        }).catch((res) => {
+            window.alert("User not found");
+            setUsername('');
+            setPassword('');
         })
 
     }

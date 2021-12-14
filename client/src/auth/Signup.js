@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router';
 import Navbar from '../components/Navbar';
 
 function Signup() {
+    const url = "http://127.0.0.1:5000";
+
     const navigate = useNavigate();
 
 
@@ -13,12 +15,12 @@ function Signup() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        await axios.post('/register', { username, password }).then((res) => {
+        await axios.post(`${url}/register`, { username, password }).then((res) => {
             // console.log(res.status);
             const token = res.data.token;
             // console.log(token);
             localStorage.setItem('token', token);
-            navigate('/login');
+            navigate(`/login`);
         }).catch((err) => {
             console.log(err);
         })

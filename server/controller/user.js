@@ -12,19 +12,28 @@ const registerUser = async (req, res) => {
     res.send("Sucess");
 }
 const getUser = async (req, res) => {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    let token = jwt.sign({ userId: user._id }, 'secretkey');
-    if (user && bcrypt.compareSync(password, user.password)) {
-        res.status(200).json({
-            title: "login success",
-            token: token
-        });
-        console.log("Success");
+    try {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username });
+
+        if (user && bcrypt.compareSync(password, user.password)) {
+            let token = jwt.sign({ userId: user._id }, 'secretkey');
+            res.status(200).json({
+                title: "login success",
+                token: token
+            });
+            console.log("Success");
+        }
+        else {
+            return res.status(400).json("User not found");
+        }
     }
-    else {
-        res.status(400).json("User not found");
+    catch {
+        res.status(400).json({
+            error: "Invalid details"
+        })
     }
+
 }
 
 const getus = (req, res) => {

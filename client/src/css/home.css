@@ -20,7 +20,7 @@
 }
 
 .sign-btn {
-    background-color: black;
+    background-color: #009DAE;
     color: white;
     font-size: 1.3rem;
     border: none;
@@ -33,20 +33,17 @@
 @media screen and (max-width:768px) {
     .home {
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
     }
 
     .src-img {
         width: 300px;
         height: 300px;
+        margin-bottom: 20%;
     }
-
-
 
     .home-div div h1 {
         font-size: 1.3rem;
     }
-
-
 }
