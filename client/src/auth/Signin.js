@@ -15,7 +15,7 @@ function Signin() {
 
         await axios.post('/login', { username, password }).then((res) => {
             const token = res.data.token;
-            console.log(token);
+            // console.log(token);
             localStorage.setItem('token', token);
             navigate('/dashboard');
         })

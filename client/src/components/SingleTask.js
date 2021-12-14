@@ -2,6 +2,8 @@ import React from 'react'
 // import { FaTimes } from 'react-icons/fa'
 import Button from './Button'
 
+
+
 function SingleTask({ task, onDelete }) {
 
     return (

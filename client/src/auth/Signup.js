@@ -14,9 +14,9 @@ function Signup() {
     const submitHandler = async (e) => {
         e.preventDefault();
         await axios.post('/register', { username, password }).then((res) => {
-            console.log(res.status);
+            // console.log(res.status);
             const token = res.data.token;
-            console.log(token);
+            // console.log(token);
             localStorage.setItem('token', token);
             navigate('/login');
         }).catch((err) => {

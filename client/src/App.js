@@ -3,45 +3,31 @@ import Task from "./components/Task";
 import { useState, useEffect } from 'react';
 import AddTask from "./components/AddTask";
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 // import Signup from "./auth/Signup";
 import './css/dashboard.css'
 import Navbar from "./components/Navbar";
 
 
+
 function App() {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [showTask, setShowTask] = useState(false);
   const [tasks, setTasks] = useState([]);
 
-
-
   useEffect(() => {
     axios.get('/tasks', { headers: { token: localStorage.getItem('token') } }).then((res) => {
-
       setTasks(res.data.tasks);
     })
-  }, [])
-
-
-  // const fetchTask = async () => {
-  //   const res = await axios.get('/tasks', { headers: { token: localStorage.getItem('token') } })
-  //   console.log(res);
-  //   return res.data;
-  // }
-
-
+  }, [tasks.length])
 
   const addTask = async (task) => {
     await axios.post('/add', task, { headers: { token: localStorage.getItem('token') } });
     axios.get('/tasks', { headers: { token: localStorage.getItem('token') } }).then((res) => {
       setTasks(res.data.tasks);
     })
-    // const taskFromServer = await fetchTask();
-    // setTasks(taskFromServer);
-
 
   }
 
@@ -50,8 +36,7 @@ function App() {
     axios.get('/tasks', { headers: { token: localStorage.getItem('token') } }).then((res) => {
       setTasks(res.data.tasks);
     })
-    // const taskFromServer = await fetchTask();
-    // setTasks(taskFromServer);
+
   }
 
   return (

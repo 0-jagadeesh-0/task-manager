@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const { getTask, deleteById } = require('./controller/task');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -13,6 +14,8 @@ connectDB();
 const app = express();
 
 //Middlewares
+
+app.use(cors());
 
 app.use(express.json());
 

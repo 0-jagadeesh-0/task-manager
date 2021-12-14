@@ -32,13 +32,11 @@ const getTask = async (req, res) => {
                 title: "user found",
                 tasks: tasks
             })
+        }).clone().catch((error) => {
+            console.log(error);
         })
 
     })
-
-    // await Task.find({}).then((task) => {
-    //     res.json(task);
-    // })
 }
 
 const deleteById = async (req, res) => {
