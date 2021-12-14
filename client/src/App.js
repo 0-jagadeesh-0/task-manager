@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
 
-  const url = "http://127.0.0.1:5000";
+  const url = "https://add-tasks-daily.herokuapp.com";
 
 
   const [showTask, setShowTask] = useState(false);

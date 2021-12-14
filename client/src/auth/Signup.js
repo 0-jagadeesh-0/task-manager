@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import Navbar from '../components/Navbar';
 
 function Signup() {
-    const url = "http://127.0.0.1:5000";
+    const url = "https://add-tasks-daily.herokuapp.com";
 
     const navigate = useNavigate();
 
