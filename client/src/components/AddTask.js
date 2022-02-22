@@ -25,7 +25,7 @@ function AddTask({ onAdd }) {
             </div>
             <div className="form-control">
                 <label>Time</label>
-                <input type="text" placeholder="Add Time" name='time' value={time} onChange={(e) => setDay(e.target.value)} />
+                <input type="time" placeholder="Add Time" name='time' value={time} onChange={(e) => setDay(e.target.value)} />
             </div>
             {/* <div className="form-control">
                 <label>Remainder</label>

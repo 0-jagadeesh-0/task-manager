@@ -1,50 +1,45 @@
 const Task = require('../models/tasks');
-const jwt = require('jsonwebtoken');
 
 const addTask = async (req, res) => {
-    let token = req.headers.token;
-    jwt.verify(token, 'secretkey', async (err, decoded) => {
-        if (err) {
-            return res.status(400).json("Not Authorized");
-        }
-        const newTask = Task({
+    const { id } = req.params;
+    try {
+        const newTask = await Task({
             task: req.body.task,
             time: req.body.time,
-            user: decoded.userId
+            user: id
         });
-        // console.log(newTask);
-        newTask.save();
-        res.send("Sucess");
-    })
+        await newTask.save();
+        res.send(newTask);
+    } catch (error) {
+        res.status(400).json("Something went wrong.");
+    }
 }
 
 const getTask = async (req, res) => {
-    let token = req.headers.token;
-    jwt.verify(token, 'secretkey', async (err, decoded) => {
-        if (err) {
-            return res.status(400).json("Not Authorized");
-        }
-        await Task.find({ user: decoded.userId }, (err, tasks) => {
-            if (err) {
-                return res.status(400).send("error");
-            }
-            return res.status(200).json({
-                title: "user found",
-                tasks: tasks
-            })
-        }).clone().catch((error) => {
-            console.log(error);
-        })
+    const { id } = req.params;
+    console.log(id);
+    try {
+        const tasks = await Task.find({ user: id });
 
-    })
+        res.status(200).json({
+            title: "user found",
+            tasks: tasks
+        })
+    } catch (error) {
+        res.status(400).json("Something went wrong.")
+    }
+
 }
 
 const deleteById = async (req, res) => {
-    await Task.findOneAndDelete({ _id: req.params.id }).then((result) => {
-        res.json(result);
-    }).catch((err) => {
-        res.send("User not found");
-    })
+    const { id } = req.params;
+    try {
+        const task = await Task.findByIdAndRemove({ _id: id });
+        res.status(200).json(task);
+
+    } catch (error) {
+        res.status(400).json("user not found.")
+    }
 }
 
 module.exports = { addTask, getTask, deleteById };

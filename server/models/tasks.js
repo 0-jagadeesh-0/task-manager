@@ -8,9 +8,6 @@ const taskSchema = new mongoose.Schema({
     time: {
         type: String
     },
-    // remainder: {
-    //     type: Boolean
-    // }
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

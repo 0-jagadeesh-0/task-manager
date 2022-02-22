@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar';
 
 function Signin() {
     const url = "https://add-tasks-daily.herokuapp.com";
+
+    // const url = "http://localhost:5000";
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -16,10 +18,12 @@ function Signin() {
 
         await axios.post(`${url}/login`, { username, password }).then((res) => {
 
-            // console.log(token);
+            console.log(res.data);
 
             const token = res.data.token;
+            const userId = res.data.userId;
             localStorage.setItem('token', token);
+            localStorage.setItem('userId', userId);
             navigate(`/dashboard`);
 
 
