@@ -19,28 +19,9 @@ function App() {
   const [showTask, setShowTask] = useState(false);
   const [tasks, setTasks] = useState([]);
 
-  const notification = () => {
 
-    tasks.forEach(task => {
-      const today = new Date();
-      var currtime = today.getHours() + ":" + today.getMinutes();
-      if (task.time === currtime) {
-        const notify = new Notification("New Messsage from task manager", {
-          body: `Time to complete ${task.task}`
-        });
-      }
-      else {
-        console.log(currtime);
-      }
 
-    });
-  }
 
-  useEffect(() => {
-    if (Notification.permission === "granted") {
-      notification();
-    }
-  })
 
   useEffect(() => {
     axios.get(`${url}/tasks/${localStorage.getItem("userId")}`, { headers: { token: localStorage.getItem('token') } }).then((res) => {
